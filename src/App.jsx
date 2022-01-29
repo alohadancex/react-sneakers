@@ -1,6 +1,6 @@
-import Card from './components/Card'
-import Header from './components/Header';
-import Drawer from './components/Drawer';
+import Card from './components/Card/Card'
+import Header from './components/Header/Header';
+import Drawer from './components/Drawer/Drawer';
 
 function App() {
   return (
