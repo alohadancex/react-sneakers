@@ -1,32 +1,25 @@
 import React from 'react';
 
-const Drawer = () => {
+const Drawer = ({ onCloseCart, items = [] }) => {
     return (
-      <div style={{ display: 'none' }} className='overlay'>
+      <div  className='overlay'>
         <div className='drawer'>
         <h2 className='mb-30'>Корзина
-          <img className='removeBtn' src="img/close.svg" alt="Remove" />
+          <img onClick={onCloseCart} className='removeBtn' src="img/close.svg" alt="Remove" />
         </h2>
         <div className="items">
-          <div className="cartItem d-flex align-center mb-20">
-            <div style={{ backgroundImage: 'url(img/sneekers/sneakers.jpg)' }} className="cartItemImg">
+         {items.map((date) => (
+            <div className="cartItem d-flex align-center mb-20">
+            <div style={{ backgroundImage: `url(${date.images})` }} 
+            className="cartItemImg">
             </div>
             <div className='mr-20 flex'>
-              <p className='mb-5'>Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
+              <p className='mb-5'>{date.title}</p>
+              <b>{date.price} руб.</b>
             </div>
             <img className='removeBtn' src="img/close.svg" alt="Remove" />
           </div>
-          <div className="cartItem d-flex align-center mb-20">
-            <div style={{ backgroundImage: 'url(img/sneekers/sneakers.jpg)' }} className="cartItemImg">
-
-            </div>
-            <div className='mr-20 flex'>
-              <p className='mb-5'>Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img className='removeBtn' src="img/close.svg" alt="Remove" />
-          </div>
+           ))}
         </div>
         <div className="cartTotalBlock">
           <ul>
