@@ -52,6 +52,8 @@ function App() {
             price={date.price}
             images={date.images}
             key={date._id}
+            onPlus={() => console.log('Нажали на плюс')}
+            onFavorit={() => console.log('Добавили в закладки')}
             />
             ))}
         </div>
