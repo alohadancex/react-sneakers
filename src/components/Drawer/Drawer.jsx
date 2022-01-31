@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Drawer = ({ onCloseCart, items = [] }) => {
+const Drawer = ({ onCloseCart,onRemove, items = [] }) => {
     return (
       <div  className='overlay'>
         <div className='drawer'>
@@ -9,7 +9,7 @@ const Drawer = ({ onCloseCart, items = [] }) => {
         </h2>
         <div className="items">
          {items.map((date) => (
-            <div className="cartItem d-flex align-center mb-20">
+            <div className="cartItem d-flex align-center mb-20" key={date._id}>
             <div style={{ backgroundImage: `url(${date.images})` }} 
             className="cartItemImg">
             </div>
@@ -17,7 +17,7 @@ const Drawer = ({ onCloseCart, items = [] }) => {
               <p className='mb-5'>{date.title}</p>
               <b>{date.price} руб.</b>
             </div>
-            <img className='removeBtn' src="img/close.svg" alt="Remove" />
+            <img onClick={onRemove} className='removeBtn' src="img/close.svg" alt="Remove" />
           </div>
            ))}
         </div>
