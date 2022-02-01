@@ -13,16 +13,16 @@ function App() {
 	const [searchValue, setSearchValue] = useState('')
 	const [cartOpened, setCartOpened] = useState(false)
 
-	// Add card from back end
+	// Add items/card/fvo from back end
 	useEffect(() => {
-		axios.get('https://61f6b7f62e1d7e0017fd6f16.mockapi.io/items').then(res => {
+		axios.get('https://61f9849d69307000176f72dd.mockapi.io/items').then(res => {
 			setItems(res.data)
 		})
-		axios.get('https://61f6b7f62e1d7e0017fd6f16.mockapi.io/cart').then(res => {
+		axios.get('https://61f9849d69307000176f72dd.mockapi.io/cart').then(res => {
 			setCartItems(res.data)
 		})
 		axios
-			.get('https://61f6b7f62e1d7e0017fd6f16.mockapi.io/favorites')
+			.get('https://61f9849d69307000176f72dd.mockapi.io/favorites')
 			.then(res => {
 				setCartItems(res.data)
 			})
@@ -30,34 +30,30 @@ function App() {
 
 	// Add card to Drawer
 	const onAddToCart = obj => {
-		axios.post('https://61f6b7f62e1d7e0017fd6f16.mockapi.io/cart', obj)
+		axios.post('https://61f9849d69307000176f72dd.mockapi.io/cart', obj)
 		setCartItems(prev => [...prev, obj])
 	}
-
+	// Add to Favorite Card
 	const onAddToFavorite = async obj => {
-		try {
 			if (favorites.find(favObj => Number(favObj.id) === Number(obj.id))) {
 				axios.delete(
-					`https://60d62397943aa60017768e77.mockapi.io/favorites/${obj.id}`
+					`https://61f9849d69307000176f72dd.mockapi.io/favorites/${obj.id}`
 				)
 				setFavorites(prev =>
 					prev.filter(item => Number(item.id) !== Number(obj.id))
 				)
 			} else {
 				const { data } = await axios.post(
-					'https://60d62397943aa60017768e77.mockapi.io/favorites',
+					'https://61f9849d69307000176f72dd.mockapi.io/favorites',
 					obj
 				)
 				setFavorites(prev => [...prev, data])
 			}
-		} catch (error) {
-			alert('Не удалось добавить в фавориты')
-			console.error(error)
 		}
-	}
 
+		// Remove Card from Drawer
 	const onRemoveItem = id => {
-		axios.delete(`https://61f6b7f62e1d7e0017fd6f16.mockapi.io/cart/${id}`)
+		axios.delete(`https://61f9849d69307000176f72dd.mockapi.io/cart/${id}`)
 		setCartItems(prev => prev.filter(item => item.id !== id))
 	}
 
