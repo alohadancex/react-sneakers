@@ -36,31 +36,31 @@ header {
 }
 
 .cartEmpty {
-  text-align: center;
+	text-align: center;
 
-  p {
-    width: 280px;
-    line-height: 24px;
-  }
+	p {
+		width: 280px;
+		line-height: 24px;
+	}
 
-  .greenButton {
-    width: 245px;
-    margin-top: 20px;
+	.greenButton {
+		width: 245px;
+		margin-top: 20px;
 
-    &:hover {
-      img {
-        transform: rotate(180deg) translateX(3px);
-      }
-    }
+		&:hover {
+			img {
+				transform: rotate(180deg) translateX(3px);
+			}
+		}
 
-    img {
-      position: relative;
-      top: 1px;
-      transform: rotate(180deg);
-      margin-right: 15px;
-      transition: transform 0.15s ease-in-out;
-    }
-  }
+		img {
+			position: relative;
+			top: 1px;
+			transform: rotate(180deg);
+			margin-right: 15px;
+			transition: transform 0.15s ease-in-out;
+		}
+	}
 }
 
 .search-block {
@@ -96,33 +96,28 @@ header {
 }
 
 .drawer {
-	width: 420px;
-	position: absolute;
-	right: 0;
-	height: 100%;
-	background: #ffffff;
-	box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
-	padding: 30px;
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 420px;
+  height: 100%;
+  right: 0;
+  background: #ffffff;
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 30px;
 
-	.items {
-		overflow: auto;
-		margin-bottom: 40px;
-	}
+  .items {
+    flex: 1;
+    overflow: auto;
+    margin-bottom: 40px;
+  }
 
-	h2 {
-		margin: 0;
-		font-size: 24px;
-		display: flex;
-		justify-content: space-between;
+  h2 {
+    margin: 0;
 		cursor: pointer;
-	}
-
-	.items {
-		flex: 1;
-	}
+  }
 }
+
 
 .cartTotalBlock {
 	ul {
@@ -146,6 +141,10 @@ header {
 
 .greenButton {
 	position: relative;
+	
+	&:disabled {
+		animation: button-loader 0.8s ease-in-out infinite;
+	}
 
 	&:hover {
 		img {
@@ -171,6 +170,11 @@ header {
 	font-weight: 600;
 	transition: background 0.2s ease-in-out;
 	cursor: pointer;
+
+	&:disabled {
+		background-color: #bebebe !important;
+	}
+
 
 	&:hover {
 		background: lighten(#9dd558, 5%);
@@ -210,5 +214,17 @@ header {
 		&:hover {
 			opacity: 1;
 		}
+	}
+}
+
+@keyframes button-loader {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 1;
 	}
 }

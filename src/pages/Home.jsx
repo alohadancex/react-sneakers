@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Card from '../components/Card/Card'
+import Card from '../components/Card'
 
 function Home({
 	items,
@@ -33,12 +33,12 @@ function Home({
 					{searchValue ? `Поиск по запросу: "${searchValue}"` : 'Все кроссовки'}
 				</h1>
 				<div className='search-block d-flex'>
-					<img src='img/search.svg' alt='Search' />
+					<img src='/img/search.svg' alt='Search' />
 					{searchValue && (
 						<img
 							onClick={() => setSearchValue('')}
 							className='clear cu-p'
-							src='img/btn-remove.svg'
+							src='/img/btn-remove.svg'
 							alt='Clear'
 						/>
 					)}
@@ -54,4 +54,4 @@ function Home({
 	)
 }
 
-export default Home;
+export default Home
