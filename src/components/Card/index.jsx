@@ -8,11 +8,7 @@ import styles from './Card.module.scss'
 function Card({
 	id,
 	title,
-<<<<<<< HEAD
-	images,
-=======
 	imageUrl,
->>>>>>> 49c79f2 (finish project)
 	price,
 	onFavorite,
 	onPlus,
@@ -21,15 +17,6 @@ function Card({
 }) {
 	const { isItemAdded } = React.useContext(AppContext)
 	const [isFavorite, setIsFavorite] = React.useState(favorited)
-<<<<<<< HEAD
-
-	const onClickPlus = () => {
-		onPlus({ id, title, images, price })
-	}
-
-	const onClickFavorite = () => {
-		onFavorite({ id, title, images, price })
-=======
 	const obj = { id, parentId: id, title, imageUrl, price }
 
 	const onClickPlus = () => {
@@ -38,7 +25,6 @@ function Card({
 
 	const onClickFavorite = () => {
 		onFavorite(obj)
->>>>>>> 49c79f2 (finish project)
 		setIsFavorite(!isFavorite)
 	}
 
@@ -61,52 +47,31 @@ function Card({
 				</ContentLoader>
 			) : (
 				<>
-<<<<<<< HEAD
-					<div className={styles.favorite} onClick={onClickFavorite}>
-						<img
-							src={isFavorite ? '/img/heart.svg' : '/img/unhearted.svg'}
-							alt='Unliked'
-						/>
-					</div>
-					<img width='100%' height={135} src={images} alt='Sneakers' />
-=======
 					{onFavorite && (
 						<div className={styles.favorite} onClick={onClickFavorite}>
 							<img
-								src={isFavorite ? '/img/heart.svg' : '/img/unhearted.svg'}
+								src={isFavorite ? 'img/heart.svg' : 'img/unhearted.svg'}
 								alt='Unliked'
 							/>
 						</div>
 					)}
 					<img width='100%' height={135} src={imageUrl} alt='Sneakers' />
->>>>>>> 49c79f2 (finish project)
 					<h5>{title}</h5>
 					<div className='d-flex justify-between align-center'>
 						<div className='d-flex flex-column'>
 							<span>Цена:</span>
 							<b>{price} руб.</b>
 						</div>
-<<<<<<< HEAD
-						<img
-							className={styles.plus}
-							onClick={onClickPlus}
-							src={
-								isItemAdded(id) ? '/img/btn-checked.svg' : '/img/btn-plus.svg'
-							}
-							alt='Plus'
-						/>
-=======
 						{onPlus && (
 							<img
 								className={styles.plus}
 								onClick={onClickPlus}
 								src={
-									isItemAdded(id) ? '/img/btn-checked.svg' : '/img/btn-plus.svg'
+									isItemAdded(id) ? 'img/btn-checked.svg' : 'img/btn-plus.svg'
 								}
 								alt='Plus'
 							/>
 						)}
->>>>>>> 49c79f2 (finish project)
 					</div>
 				</>
 			)}
