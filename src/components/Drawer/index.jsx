@@ -89,7 +89,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
 								<li>
 									<span>Налог 5%:</span>
 									<div></div>
-									<b>{((totalPrice / 100) * 5).toFixed(2)} руб. </b>
+									<b>{(totalPrice / 100) * 5} руб. </b>
 								</li>
 							</ul>
 							<button
@@ -110,7 +110,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
 								: 'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'
 						}
 						images={
-							isOrderComplete ? 'img/complete-order.png' : 'img/arrow.svg'
+							isOrderComplete ? 'img/complete-order.jpg' : 'img/empty.jpg'
 						}
 					/>
 				)}
