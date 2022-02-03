@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { Route } from 'react-router-dom'
 import axios from 'axios'
 import Header from './components/Header/Header'
@@ -9,14 +9,14 @@ import Home from './pages/Home'
 import Favorites from './pages/Favorites'
 
 function App() {
-	const [items, setItems] = useState([])
-	const [cartItems, setCartItems] = useState([])
-	const [favorites, setFavorites] = useState([])
-	const [searchValue, setSearchValue] = useState('')
-	const [cartOpened, setCartOpened] = useState(false)
-	const [isLoading, setIsLoading] = useState(true)
+	const [items, setItems] = React.useState([])
+	const [cartItems, setCartItems] = React.useState([])
+	const [favorites, setFavorites] = React.useState([])
+	const [searchValue, setSearchValue] = React.useState('')
+	const [cartOpened, setCartOpened] = React.useState(false)
+	const [isLoading, setIsLoading] = React.useState(true)
 
-	useEffect(() => {
+	React.useEffect(() => {
 		async function fetchData() {
 			// TODO: Сделать try catch + Promise.all
 			const cartResponse = await axios.get(
@@ -39,7 +39,7 @@ function App() {
 	}, [])
 
 	const onAddToCart = obj => {
-		
+
 		if (cartItems.find(item => Number(item.id) === Number(obj.id))) {
 			axios.delete(`https://61f9849d69307000176f72dd.mockapi.io/cart/${obj.id}`)
 			setCartItems(prev =>
@@ -59,7 +59,9 @@ function App() {
 	const onAddToFavorite = async obj => {
 		try {
 			if (favorites.find(favObj => Number(favObj.id) === Number(obj.id))) {
-				axios.delete(`/favorites/${obj.id}`)
+				axios.delete(
+					`https://61f9849d69307000176f72dd.mockapi.io/favorites/${obj.id}`
+				)
 				setFavorites(prev =>
 					prev.filter(item => Number(item.id) !== Number(obj.id))
 				)
